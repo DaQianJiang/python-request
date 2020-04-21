@@ -1,4 +1,10 @@
-base_url : https://co.vvip-u.com
+http:
+  host : https://co.vvip-u.com
+  time_out : 1.0
+
+
+
+
 
 logger :
   console_level : "DEBUG"

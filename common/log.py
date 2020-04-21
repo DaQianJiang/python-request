@@ -12,8 +12,7 @@ class Log():
     def __init__(self):
         if not os.path.exists(LOG_PATH):
             os.mkdir(LOG_PATH)
-        self.config_Reader = config_reader.configReader() #创建config_reader对象
-        self.config_logger = self.config_Reader.get_log()
+        self.config_logger = config_reader.configReader().get_log() #创建config_reader对象
         self.file_lever = self.config_logger['file_level']
         self.console_level = self.config_logger['console_level']
         self.format = self.config_logger['format']

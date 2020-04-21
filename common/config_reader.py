@@ -18,7 +18,7 @@ class configReader():
 
     #读取url内容
     def get_url(self):
-        value = self.get_configv_value("base_url")
+        value = self.get_configv_value("http")
         return value
 
     #读取其它配置的内容
