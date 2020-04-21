@@ -56,4 +56,4 @@ if __name__ == '__main__':
     response  = htt.post_method()
     print("-----------------------")
     print(response.text)
-    print(response)
+    print(response.json())
