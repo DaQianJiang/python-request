@@ -1,9 +1,6 @@
 http:
   host : https://co.vvip-u.com
-  time_out : 1.0
-
-
-
+  timeout : 1.0
 
 
 logger :

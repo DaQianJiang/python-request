@@ -30,7 +30,7 @@ class configReader():
 
 if __name__ == '__main__':
     c = configReader()
-    print(c.get_url())
+    print(c.get_url()['timeout'])
     m = c.get_log()
     print(m)
     print(c.get_log()['console_level'])

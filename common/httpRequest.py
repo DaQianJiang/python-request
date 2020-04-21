@@ -50,4 +50,10 @@ class httpMethod():
             return None
 if __name__ == '__main__':
     htt = httpMethod()
-    response  = 
+    htt.set_url('/api/customer/login')
+    htt.set_header({'Content-Type': 'application/json;charset=UTF-8'})
+    htt.set_data({"phoneNo":"18408249437","validateCode":"198977","msg":"","osType":5,"cityCode":"028"})
+    response  = htt.post_method()
+    print("-----------------------")
+    print(response.text)
+    print(response)
