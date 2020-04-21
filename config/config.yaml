@@ -1,1 +1,10 @@
-base_url : https://co.vvip-u.com
+http:
+  host : https://co.vvip-u.com
+  timeout : 1.0
+
+
+logger :
+  console_level : "DEBUG"
+  file_level : "INFO"
+  format : "%(asctime)s - [line:%(lineno)d]-%(name)s -%(levelname)s - %(message)s"
+  datefmt : '%Y/%m/%d %H:%M:%S'

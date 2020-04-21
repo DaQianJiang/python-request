@@ -18,15 +18,23 @@ class configReader():
 
     #读取url内容
     def get_url(self):
-        value = self.get_configv_value("base_url")
+        value = self.get_configv_value("http")
         return value
 
     #读取其它配置的内容
+    #读取log配置内容
+    def get_log(self):
+        value = self.get_configv_value("logger")
+        return value
 
 
 if __name__ == '__main__':
     c = configReader()
-    print(c.get_url())
+    print(c.get_url()['timeout'])
+    m = c.get_log()
+    print(m)
+    print(c.get_log()['console_level'])
+
 
 
 
