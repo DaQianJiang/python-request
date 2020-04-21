@@ -1,1 +1,7 @@
 base_url : https://co.vvip-u.com
+
+logger :
+  console_level : "DEBUG"
+  file_level : "INFO"
+  format : "%(asctime)s - [line:%(lineno)d]-%(name)s -%(levelname)s - %(message)s"
+  datefmt : '%Y/%m/%d %H:%M:%S'
