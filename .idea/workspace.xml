@@ -1,11 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="5862b750-c250-475c-9727-0c946fa663ca" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/common/config_reader.py" beforeDir="false" afterPath="$PROJECT_DIR$/common/config_reader.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/common/httpRequest.py" beforeDir="false" afterPath="$PROJECT_DIR$/common/httpRequest.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/config.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/config/config.yaml" afterDir="false" />
-    </list>
+    <list default="true" id="5862b750-c250-475c-9727-0c946fa663ca" name="Default Changelist" comment="" />
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -31,8 +27,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/common/httpRequest.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="162">
-              <caret line="58" column="19" lean-forward="true" selection-start-line="58" selection-start-column="19" selection-end-line="58" selection-end-column="19" />
+            <state relative-caret-position="126">
+              <caret line="56" column="36" lean-forward="true" selection-start-line="56" selection-start-column="36" selection-end-line="56" selection-end-column="36" />
               <folding>
                 <element signature="e#0#15#0" expanded="true" />
               </folding>
@@ -94,8 +90,8 @@
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="381" />
-    <option name="y" value="165" />
+    <option name="x" value="190" />
+    <option name="y" value="72" />
     <option name="width" value="1890" />
     <option name="height" value="861" />
   </component>
@@ -246,15 +242,15 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1587350126413</updated>
-      <workItem from="1587350130167" duration="26052000" />
+      <workItem from="1587350130167" duration="26712000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="26052000" />
+    <option name="totallyTimeSpent" value="26712000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="254" y="110" width="1260" height="574" extended-state="0" />
+    <frame x="127" y="48" width="1260" height="574" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info id="Designer" />
@@ -309,6 +305,16 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/common/config_reader.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="83">
+          <caret line="32" column="31" selection-start-line="32" selection-start-column="31" selection-end-line="32" selection-end-column="31" />
+          <folding>
+            <element signature="e#0#9#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/common/log.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-342">
@@ -326,20 +332,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/common/config_reader.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="83">
-          <caret line="32" column="31" selection-start-line="32" selection-start-column="31" selection-end-line="32" selection-end-column="31" />
-          <folding>
-            <element signature="e#0#9#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/common/httpRequest.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="162">
-          <caret line="58" column="19" lean-forward="true" selection-start-line="58" selection-start-column="19" selection-end-line="58" selection-end-column="19" />
+        <state relative-caret-position="126">
+          <caret line="56" column="36" lean-forward="true" selection-start-line="56" selection-start-column="36" selection-end-line="56" selection-end-column="36" />
           <folding>
             <element signature="e#0#15#0" expanded="true" />
           </folding>
