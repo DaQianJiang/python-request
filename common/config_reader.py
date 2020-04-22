@@ -3,7 +3,9 @@ import yaml
 
 
 ROOT_PATH = os.path.dirname(os.path.abspath('.'))
-CONFIG_PATH = os.path.join(ROOT_PATH,'config\config.yaml')
+CONFIG_PATH = os.path.join(ROOT_PATH,'config/config.yaml')
+#print(ROOT_PATH)
+#print(CONFIG_PATH)
 
 class configReader():
 
