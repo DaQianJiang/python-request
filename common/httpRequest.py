@@ -15,6 +15,7 @@ class httpMethod():
         self.data = {}  #post方法的参数
         self.url = None
         self.files = {}
+        #self.proxies = {"driver-taxi.vvip-u.com":"120.77.164.223:443"}
 
     def set_url(self,url):
         self.url = self.host + url
@@ -50,9 +51,9 @@ class httpMethod():
             return None
 if __name__ == '__main__':
     htt = httpMethod()
-    htt.set_url('/api/customer/login')
+    htt.set_url('/driverLogin/login')
     htt.set_header({'Content-Type': 'application/json;charset=UTF-8'})
-    htt.set_data({"phoneNo":"18408249437","validateCode":"198977","msg":"","osType":5,"cityCode":"028"})
+    htt.set_data({"mobilePhone": "18408249437","validateCode": "999999"})
     response  = htt.post_method()
     print("-----------------------")
     print(response.text)
