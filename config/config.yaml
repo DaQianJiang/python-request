@@ -8,3 +8,12 @@ logger :
   file_level : "INFO"
   format : "%(asctime)s - [line:%(lineno)d]-%(name)s -%(levelname)s - %(message)s"
   datefmt : '%Y/%m/%d %H:%M:%S'
+
+database_info :
+  database : test
+  host : 120.78.168.146
+  username : root
+  password : 123456
+  port : 3306
+
+

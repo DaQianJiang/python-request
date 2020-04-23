@@ -28,6 +28,9 @@ class configReader():
     def get_log(self):
         value = self.get_configv_value("logger")
         return value
+    def get_database(self):
+        value = self.get_configv_value("database_info")
+        return value
 
 
 if __name__ == '__main__':
