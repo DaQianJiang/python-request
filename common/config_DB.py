@@ -7,7 +7,7 @@ class MyDB():
 
     def __init__(self):
         self.database_config = configReader().get_database()
-        self.logger = Log.get_log()
+        self.logger = Log().get_log()
         self.host = self.database_config['host']
         self.username = self.database_config['username']
         self.password = self.database_config['password']
@@ -16,9 +16,9 @@ class MyDB():
         self.config = {
             'host':str(self.host),
             'user': self.username,
-            'password':self.password,
+            'passwd':str(self.password),
             'port':int(self.port),
-            'database':self.database
+            'db':self.database
         }
         self.db = None
         self.cursor = None
@@ -32,5 +32,30 @@ class MyDB():
         except ConnectionError as ex:
             self.logger.debug(str(ex))
 
-    def excutSQL(self):
-        
+    def excutSQL(self,sql):
+        self.connectDB()
+        self.cursor.execute(sql)
+        self.db.commit()
+        self.logger.info("-------commit successully-------")
+        return self.cursor
+    def get_all(self,cursor):
+        value = cursor.fetchall()
+        return value
+    def get_one(self,cursor):
+        value = cursor.fetchone()
+        return value
+    def closeDB(self):
+        self.db.close()
+        self.logger.info("Database closed")
+        print("------Database closed----------")
+
+if __name__ == '__main__':
+    dbinfo = MyDB()
+    dbinfo.connectDB()
+    cursor = dbinfo.excutSQL("select * from user")
+    print(dbinfo.get_all(cursor))
+    print(dbinfo.get_one(cursor))
+    dbinfo.closeDB()
+
+
+

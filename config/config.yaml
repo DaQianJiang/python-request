@@ -10,10 +10,13 @@ logger :
   datefmt : '%Y/%m/%d %H:%M:%S'
 
 database_info :
-  database : test
+  database : learn
   host : 120.78.168.146
   username : root
   password : 123456
   port : 3306
+
+email_info: mail_host = smtp.163.com
+
 
 
