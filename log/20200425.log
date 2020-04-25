@@ -4,3 +4,6 @@
 2020/04/25 15:17:46 - [line:49]-common.log -INFO - Database closed
 2020/04/25 15:21:38 - [line:47]-__main__ -INFO - testtttttt
 2020/04/25 17:13:00 - [line:78]-common.log -INFO - ----邮件发送成功----
+2020/04/25 21:38:49 - [line:78]-common.log -INFO - ----邮件发送成功----
+2020/04/25 21:40:34 - [line:78]-common.log -INFO - ----邮件发送成功----
+2020/04/25 21:40:34 - [line:79]-common.log -INFO - 发件人1404482005@qq.com,收件人['1404482005@qq.com', '1404482005@qq.com']

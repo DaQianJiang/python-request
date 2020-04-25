@@ -29,8 +29,8 @@ class Email():
             self.revicer = str(self.mail_receivers).split("/")
         else:
             self.logger.info("---邮件接收者为空-----")
-        #print(self.mail_receivers)
-        #print(self.revicer)
+        print(self.mail_receivers)
+        print(self.revicer)
         self.mail_title = self.config_email["title"]
         self.mail_content = self.config_email["content"]
         self.mail_test_user = self.config_email["testuser"]
@@ -42,7 +42,7 @@ class Email():
     def set_mail_header(self):
         self.msg_root["subject"] = Header(self.mail_subject,"utf-8")
         self.msg_root["From"] = self.mail_sender
-        self.msg_root["To"] = ";".join(self.mail_receivers)
+        self.msg_root["To"] = ";".join(self.revicer)
     def set_mail_content(self):
         self.content = MIMEText(self.mail_content,"plain","utf-8")
         self.msg_root.attach(self.content)
@@ -76,6 +76,7 @@ class Email():
                     self.smtp_server.sendmail(self.mail_sender,self.revicer,self.msg_root.as_string())
                     self.smtp_server.quit()
                     self.logger.info("----邮件发送成功----")
+                    self.logger.info("发件人%s,收件人%s",self.mail_sender,self.revicer)
                 except smtplib.SMTPException as e:
                      self.logger.error("---发送邮件失败---:",e)
 

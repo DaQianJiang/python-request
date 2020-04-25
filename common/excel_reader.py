@@ -21,7 +21,7 @@ class dataReader():
         for i in range(self.nrow):
             if self.sheet.row_values(i)[0]!=u'case_name':         #获取某一行的第一列的值
                 self.cls.append(self.sheet.row_values(i))         #将每一行的值加载到一个列表返回，每一行是一个列表
-        return self.cls
+        return self.cls      #返回每一行的值，并且以列表形式
 
 
     #获取XML中的值
