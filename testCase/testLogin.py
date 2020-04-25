@@ -1,5 +1,5 @@
 import unittest
-import paramunittest
+#import paramunittest
 from common.log import Log
 from common.httpRequest import httpMethod
 
@@ -11,5 +11,5 @@ class testLogin(unittest.TestCase):
     http_method = httpMethod().get_method()
     login_excel = dataReader.get_excel("user.xlsx","login")
 
-    
+
 
