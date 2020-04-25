@@ -5,9 +5,10 @@ import common.log as log
 
 
 class httpMethod():
+    logger = log.Log().get_log()
+    http_config = config_reader.configReader().get_url()
     def __init__(self):
-        self.logger = log.Log().get_log()
-        self.http_config = config_reader.configReader().get_url()
+
         self.host = self.http_config['host']
         self.timeout = self.http_config['timeout']
         self.headers = {}

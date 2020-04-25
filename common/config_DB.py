@@ -4,10 +4,10 @@ import pymysql
 from common.log import Log
 
 class MyDB():
-
+    database_config = configReader().get_database()
+    logger = Log().get_log()
     def __init__(self):
-        self.database_config = configReader().get_database()
-        self.logger = Log().get_log()
+
         self.host = self.database_config['host']
         self.username = self.database_config['username']
         self.password = self.database_config['password']

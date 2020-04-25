@@ -17,12 +17,12 @@ database_info :
   port : 3306
 
 email_info:
-  mail_host : smtp.163.com
+  stmp_host : smtp.qq.com
   mail_user : 1404482005@qq.com
-  mail_password: vghwbtajojaziiha
-  mail_port : 25
+  stmp_password: dsihyphcendgbaha
+  stmp_port : 465
   sender : 1404482005@qq.com
-  receiver : 1404482005@qq.com
+  receiver : 1404482005@qq.com/1404482005@qq.com
   title : 接口测试报告
   content : 接口测试报告发送
   testuser : someone

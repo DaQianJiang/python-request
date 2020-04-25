@@ -9,10 +9,10 @@ from logging import StreamHandler
 LOG_PATH = os.path.join(ROOT_PATH,'log')
 
 class Log():
+    config_logger = config_reader.configReader().get_log() #创建config_reader对象
     def __init__(self):
         if not os.path.exists(LOG_PATH):
             os.mkdir(LOG_PATH)
-        self.config_logger = config_reader.configReader().get_log() #创建config_reader对象
         self.file_lever = self.config_logger['file_level']
         self.console_level = self.config_logger['console_level']
         self.format = self.config_logger['format']

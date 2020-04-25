@@ -31,6 +31,10 @@ class configReader():
     def get_database(self):
         value = self.get_configv_value("database_info")
         return value
+    #读取邮件配置
+    def get_email(self):
+        value = self.get_configv_value("email_info")
+        return value
 
 
 if __name__ == '__main__':

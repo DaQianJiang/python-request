@@ -7,8 +7,7 @@ from common.config_reader import ROOT_PATH
 
 TEST_FILE = os.path.join(ROOT_PATH,"testFile")
 class dataReader():
-    def __init__(self):
-        self.logger = Log.Log().get_log()
+    logger = Log.Log().get_log()
 
     #获取不同excel的内容/以及不同页签内的内容
     def get_excel(self,xls_name,sheet_name):
