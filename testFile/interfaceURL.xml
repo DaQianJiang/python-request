@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<interface>
+    <url name="register">
+        <group>User</group>
+        <module>Member</module>
+        <action>registerCommon</action>
+    </url>
+
+    <url name="login">
+        <group>User</group>
+        <module>Member</module>
+        <action>loginCommon</action>
+    </url>
+
+
+</interface>

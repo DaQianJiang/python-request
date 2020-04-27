@@ -9,6 +9,7 @@ TEST_FILE = os.path.join(ROOT_PATH,"testFile")
 class dataReader():
     logger = Log.Log().get_log()
 
+#---------------获取Excel中的测试用例数据-------------------
     #获取不同excel的内容/以及不同页签内的内容
     def get_excel(self,xls_name,sheet_name):
 
@@ -23,7 +24,7 @@ class dataReader():
                 self.cls.append(self.sheet.row_values(i))         #将每一行的值加载到一个列表返回，每一行是一个列表
         return self.cls      #返回每一行的值，并且以列表形式
 
-
+#----------------获取数据库文件--------------------
     #获取XML中的值
     def set_xml(self):
         self.database = {}
@@ -58,6 +59,26 @@ class dataReader():
         self.sql = self.db.get(sql_id)
         return self.sql
 
+#----------读取URL----------
+    def get_xml_url(self,name):
+        self.url_list = []
+        self.url_data_path = os.path.join(TEST_FILE,"interfaceURL.xml")
+        if not self.url_list:
+            self.tree = ET.parse(self.url_data_path).getroot()
+            for u in self.tree.findall("url"):
+                self.url_name = u.get('name')
+                print(self.url_name)
+                if self.url_name == name:
+                    for c in u.getchildren():
+                        self.url_list.append(c.text)
+                    print(self.url_list)
+        self.url = "/"+'/'.join(self.url_list)
+        print(self.url)
+        return self.url
+
+                    #print("-------",self.url_name.)
+
+
 
 
 if __name__ == '__main__':
@@ -69,5 +90,6 @@ if __name__ == '__main__':
     sql = datared.get_sql('test','testtable','select_member')
     print(database)
     print(sql)
+    datared.get_xml_url("login")
 
 
