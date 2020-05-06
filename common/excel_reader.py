@@ -67,13 +67,13 @@ class dataReader():
             self.tree = ET.parse(self.url_data_path).getroot()
             for u in self.tree.findall("url"):
                 self.url_name = u.get('name')
-                print(self.url_name)
+                #print(self.url_name)
                 if self.url_name == name:
                     for c in u.getchildren():
                         self.url_list.append(c.text)
-                    print(self.url_list)
+                    #print(self.url_list)
         self.url = "/"+'/'.join(self.url_list)
-        print(self.url)
+        #print(self.url)
         return self.url
 
                     #print("-------",self.url_name.)

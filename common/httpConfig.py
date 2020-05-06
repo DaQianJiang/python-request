@@ -4,11 +4,12 @@ import common.log as log
 
 
 
-class httpMethod():
+class httpConfig():
     logger = log.Log().get_log()
-    http_config = config_reader.configReader().get_url()
+
     def __init__(self):
 
+        self.http_config = config_reader.configReader().get_url()
         self.host = self.http_config['host']
         self.timeout = self.http_config['timeout']
         self.headers = {}
@@ -20,6 +21,7 @@ class httpMethod():
 
     def set_url(self,url):
         self.url = self.host + url
+        print(self.url)
 
     def set_header(self,header):
         self.headers = header
@@ -51,10 +53,11 @@ class httpMethod():
             self.logger.error("Time out")
             return None
 if __name__ == '__main__':
-    htt = httpMethod()
+    htt = httpConfig()
     htt.set_url('/driverLogin/login')
     htt.set_header({'Content-Type': 'application/json;charset=UTF-8'})
     htt.set_data({"mobilePhone": "18408249437","validateCode": "999999"})
+    print(htt.url)
     response  = htt.post_method()
     print("-----------------------")
     print(response.text)
