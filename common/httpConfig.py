@@ -21,7 +21,7 @@ class httpConfig():
 
     def set_url(self,url):
         self.url = self.host + url
-        print(self.url)
+        print("httpConfig++",self.url)
 
     def set_header(self,header):
         self.headers = header

@@ -2,6 +2,10 @@ http:
   host : https://driver-taxi.vvip-u.com
   timeout : 1.0
 
+common_token:
+  path : /get/token
+  user_name : user1
+  password : 123456
 
 logger :
   console_level : "DEBUG"
