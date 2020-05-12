@@ -72,12 +72,12 @@ class testLogin(unittest.TestCase):
 
 
     def tearDown(self):
-        
+
         return
 
     def checkResult(self):
         self.info = self.response.json()
-        self.assertEqual(self.infop['code'],self.code)
+        self.assertEqual(self.info['code'],self.code)
         self.assertEqual(self.info["message"],self.message)
         return
 

@@ -6,6 +6,7 @@ from xlrd import open_workbook
 from common.config_reader import ROOT_PATH
 
 TEST_FILE = os.path.join(ROOT_PATH,"testFile")
+print(ROOT_PATH)
 class dataReader():
     logger = Log.Log().get_log()
 
