@@ -7,7 +7,9 @@ from common.HTMLTestRunner import HTMLTestRunner
 from common.config_reader import ROOT_PATH
 #from testCase import testLogin
 
-report_path = os.path.join(ROOT_PATH,'python-request/testPeport/report.html')
+report_path = os.path.join(ROOT_PATH,'testReport/report.html')
+case_path = os.path.join(ROOT_PATH,"testCase")
+print(case_path)
 
 
 class testAll():
@@ -22,9 +24,9 @@ class testAll():
     def run(self):
         #添加测试套件
         print("创建测试套件")
-        test_suit = unittest.TestSuite()
-        loader = unittest.TestLoader()
-        test_suit.addTest(loader.loadTestsFromTestCase(testLogin))
+        #test_suit = unittest.TestSuite()
+        #loader = unittest.TestLoader()
+        test_suit = unittest.TestLoader().discover(case_path)
         #创建测试报告文件
         print("生成测试报告")
         try:
