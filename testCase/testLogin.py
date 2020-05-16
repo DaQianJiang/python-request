@@ -81,8 +81,8 @@ class testLogin(unittest.TestCase):
         self.assertEqual(self.info["message"],self.message)
         return
 
-if __name__ == '__main__':
-    unittest.main(verbosity=2)
+# if __name__ == '__main__':
+#     unittest.main(verbosity=2)
 
 
 

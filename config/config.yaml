@@ -30,7 +30,7 @@ email_info:
   title : 接口测试报告
   content : 接口测试报告发送
   testuser : someone
-  on_off : 1
+  on_off : "0"
 
 
 

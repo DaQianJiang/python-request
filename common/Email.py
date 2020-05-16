@@ -49,7 +49,7 @@ class Email():
 
     def set_mail_file(self):
         if os.path.exists(REPORT_FILE):
-            self.report = os.path.join(REPORT_FILE,"mail.txt")
+            self.report = os.path.join(REPORT_FILE,"report.html")
             self.file = open(self.report,"rb").read()
             self.att_file = MIMEText(self.file,"base64","utf-8")
             self.att_file["Content-Type"]= 'application/octet-stream'

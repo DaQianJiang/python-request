@@ -17,7 +17,7 @@ class commonMethod():
         self.response = requests.post(url=self.url,data=self.data)
         self.info = self.response.json()
         self.token = self.info.get('token')
-        print("The token is %s"% (self.token))
+        #print("The token is %s"% (self.token))
         self.logger.info("the token is:%s"%(self.token))
         return self.token
 
