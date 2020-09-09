@@ -21,7 +21,7 @@ class dataReader():
         self.sheet = self.file.sheet_by_name(sheet_name=sheet_name)#获取某个sheet的内容
         self.nrow = self.sheet.nrows    #excel的行数
         for i in range(self.nrow):
-            if self.sheet.row_values(i)[0]!=u'case_name':         #获取某一行的第一列的值
+            if self.sheet.row_values(i)[0]!=u'id':         #获取某一行的第一列的值
                 self.cls.append(self.sheet.row_values(i))         #将每一行的值加载到一个列表返回，每一行是一个列表
         return self.cls      #返回每一行的值，并且以列表形式
 

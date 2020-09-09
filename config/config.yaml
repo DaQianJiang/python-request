@@ -1,6 +1,8 @@
 http:
-  host : https://driver-taxi.vvip-u.com
+  host : 120.78.168.146:8083
   timeout : 1.0
+header :
+  content-Type : application/json
 
 common_token:
   path : /get/token
