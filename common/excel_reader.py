@@ -25,6 +25,9 @@ class dataReader():
                 self.cls.append(self.sheet.row_values(i))         #将每一行的值加载到一个列表返回，每一行是一个列表
         return self.cls      #返回每一行的值，并且以列表形式
 
+
+# 往Excel中写入数据
+
 #----------------获取数据库文件--------------------
     #获取XML中的值
     def set_xml(self):

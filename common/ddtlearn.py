@@ -2,6 +2,7 @@ from common.excel_reader import dataReader
 import ddt
 import  unittest
 import paramunittest
+import json
 
 #login_excel = dataReader().get_excel("user.xlsx",'login')
 login_excel = dataReader().get_excel("user.xlsx",'testlearn')
@@ -15,11 +16,14 @@ class ddtlearn(unittest.TestCase):
     @ddt.data(*login_excel)
 
     def test_1getexceldata(self,data):
-        id,name,description = data
+        id,name,description,ruledata = data
         #self.url = data['url']
         #print(data)
         #print(data[2])
-        print(id)
+         #将字符串转化为字典
+        #print(ruledata)
+        datas = json.loads(ruledata)
+        print(datas["code"])
 
 
     def tearDown(self):

@@ -2,7 +2,7 @@ import unittest
 import paramunittest
 from common.log import Log
 from common.httpConfig import httpConfig
-#import ddt
+import ddt
 import os
 from common.excel_reader import dataReader
 from common.commonMethod import commonMethod
@@ -17,15 +17,19 @@ commethod = commonMethod()
 class testLogin(unittest.TestCase):
 
     #获取Excel对应的数据，可以循环读取
-    def setParameters(self,case_name,method,token,mobilePhone,validateCode,data,code,message):
-        self.case_name = case_name
+    def setParameters(self,id,name,description,isExec,url,method,token,paramData,expectedResData,ruleResData,trueResDate,result):
+        self.id = id
+        self.name = name
+        self.description = description
+        self.isExec = isExec
+        self.url = url
         self.method = method
         self.token = token
-        self.mobilePhone = mobilePhone
-        self.validateCode = validateCode
-        self.data = data
-        self.code = code
-        self.message = message
+        self.paramData = paramData
+        self.expectedResData = expectedResData
+        self.ruleResData = ruleResData
+        self.trueResDate = trueResDate
+        self.result = result
 
     def description(self):
         return  self.case_name
@@ -38,10 +42,12 @@ class testLogin(unittest.TestCase):
 
     def test_Login(self):
         #从interfaceURL.xml中获取login的path
-        self.path = dataReader().get_xml_url("login")
-        httpCongigInfo.set_url(self.path)
+        #self.path = dataReader().get_xml_url("login")
+        #httpCongigInfo.set_url(self.path)
 
-        print("获取到的路径--：",self.path)
+        httpCongigInfo.set_url(self.url)
+
+        print("获取到的路径--：",self.url)
         print("第一步:设置URL"+"----"+httpCongigInfo.url)
 
         #token
@@ -49,12 +55,12 @@ class testLogin(unittest.TestCase):
             token = commethod.get_common_token()
         elif self.token == "1":
             token = None
-        header = {"token":str(token)}
+        header = {"Content-Type":"application/json","token":str(token)}
         httpCongigInfo.set_header(header)
         print("第二步获取header",httpCongigInfo.headers)
 
         #data
-        data = {"mobilePhone":self.mobilePhone,"validateCode":self.validateCode}
+        data = self.paramData
         httpCongigInfo.set_data(data)
         httpCongigInfo.set_param(data)
         print("第三步:设置发送请求参数",httpCongigInfo.data)
@@ -66,20 +72,25 @@ class testLogin(unittest.TestCase):
         print("第四步发送请求\n\t\t请求方法",self.method)
         print("获得的response为:",self.response.json())
 
+        print("第五步检查结果")
         #检查结果
         self.checkResult()
-        print("第五步检查结果")
+
+
 
 
     def tearDown(self):
 
-        return
+        print('-----结束-----')
 
     def checkResult(self):
         self.info = self.response.json()
-        self.assertEqual(self.info['code'],self.code)
-        self.assertEqual(self.info["message"],self.message)
-        return
+        if self.assertEqual(self.response.status_code,200) and self.assertEqual(self.info['code'],json.loads(self.ruleResData)):
+            self.trueResDate = self.info
+            self.result = 'success'
+        else:
+            self.trueResDate = self.info
+            self.result = "failed"
 
 # if __name__ == '__main__':
 #     unittest.main(verbosity=2)

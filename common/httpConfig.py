@@ -52,6 +52,9 @@ class httpConfig():
         except TimeoutError:
             self.logger.error("Time out")
             return None
+
+
+
 if __name__ == '__main__':
     htt = httpConfig()
     htt.set_url('/driverLogin/login')

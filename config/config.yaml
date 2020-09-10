@@ -2,7 +2,7 @@ http:
   host : 120.78.168.146:8083
   timeout : 1.0
 header :
-  content-Type : application/json
+  Content-Type : application/json
 
 common_token:
   path : /get/token
@@ -25,7 +25,7 @@ database_info :
 email_info:
   stmp_host : smtp.qq.com
   mail_user : 1401482005@qq.com
-  stmp_password: dsihyphcendgbaha
+  stmp_password: xxxxxx
   stmp_port : 465
   sender : 1401482005@qq.com
   receiver : 1401482005@qq.com/1401482005@qq.com
