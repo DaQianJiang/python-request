@@ -88,6 +88,7 @@ class testLogin(unittest.TestCase):
         if self.assertEqual(self.response.status_code,200) and self.assertEqual(self.info['code'],json.loads(self.ruleResData)):
             self.trueResDate = self.info
             self.result = 'success'
+           # dataReader.write_excel("user.xlsx",'login',int(self.id))
         else:
             self.trueResDate = self.info
             self.result = "failed"

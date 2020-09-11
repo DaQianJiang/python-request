@@ -24,6 +24,7 @@ class ddtlearn(unittest.TestCase):
         #print(ruledata)
         datas = json.loads(ruledata)
         print(datas["code"])
+        #dataReader.write_excel("user.xlsx",'login',int(self.id))
 
 
     def tearDown(self):
