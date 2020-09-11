@@ -4,6 +4,7 @@ import os
 from xml.etree import ElementTree as ET
 from xlrd import open_workbook
 from common.config_reader import ROOT_PATH
+from xlutils.copy import copy
 
 TEST_FILE = os.path.join(ROOT_PATH,"testFile")
 print(ROOT_PATH)
@@ -27,6 +28,15 @@ class dataReader():
 
 
 # 往Excel中写入数据
+    def write_excel(self,xls_name,sheet_name,row,col,value):
+        self.xls_path = os.path.join(TEST_FILE,'case',xls_name)
+        self.data = open_workbook(filename=self.xls_path)
+        self.data_copy = copy(self.data)
+        self.sheet = self.data_copy.sheet_by_name(sheet_name=sheet_name)
+        self.sheet.write(row, col, value)  # 在某一单元格写入value
+        self.data_copy.save(self.xls_path)  # 保存文件
+
+
 
 #----------------获取数据库文件--------------------
     #获取XML中的值
