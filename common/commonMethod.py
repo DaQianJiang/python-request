@@ -1,5 +1,5 @@
 from common.log import Log
-from common.httpConfig import httpConfig
+from common.httpMethod import httpConfig
 import json
 from common.config_reader import configReader
 import requests

@@ -54,7 +54,6 @@ class httpConfig():
             return None
 
 
-
 if __name__ == '__main__':
     htt = httpConfig()
     htt.set_url('/driverLogin/login')

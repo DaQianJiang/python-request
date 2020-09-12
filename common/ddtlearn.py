@@ -5,7 +5,7 @@ import paramunittest
 import json
 
 #login_excel = dataReader().get_excel("user.xlsx",'login')
-login_excel = dataReader().get_excel("user.xlsx",'testlearn')
+login_excel = dataReader().get_excel("user.xls",'testlearn')
 
 @ddt.ddt
 class ddtlearn(unittest.TestCase):
@@ -16,7 +16,7 @@ class ddtlearn(unittest.TestCase):
     @ddt.data(*login_excel)
 
     def test_1getexceldata(self,data):
-        id,name,description,ruledata = data
+        id,name,description,ruledata,result = data
         #self.url = data['url']
         #print(data)
         #print(data[2])
@@ -24,7 +24,7 @@ class ddtlearn(unittest.TestCase):
         #print(ruledata)
         datas = json.loads(ruledata)
         print(datas["code"])
-        #dataReader.write_excel("user.xlsx",'login',int(self.id))
+        dataReader().write_excel("user.xls","testlearn",int(id),4,"failed")
 
 
     def tearDown(self):
