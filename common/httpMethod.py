@@ -1,6 +1,7 @@
 import requests
 import common.config_reader as config_reader
 import common.log as log
+import json
 
 
 
@@ -21,7 +22,7 @@ class httpConfig():
 
     def set_url(self,url):
         self.url = self.host + url
-        print("httpConfig++",self.url)
+        #print("httpConfig++",self.url)
 
     def set_header(self,header):
         self.headers = header
@@ -46,7 +47,7 @@ class httpConfig():
 
     def post_method(self):
         try:
-            self.reponse = requests.post(self.url,headers = self.headers, data=self.data,
+            self.reponse = requests.post(self.url,headers = self.headers, data=json.dumps(self.data),
                                          files=self.files,timeout = float(self.timeout))
             return self.reponse
         except TimeoutError:
@@ -56,11 +57,12 @@ class httpConfig():
 
 if __name__ == '__main__':
     htt = httpConfig()
-    htt.set_url('/driverLogin/login')
+    htt.set_url('/test/api/user/doLogin')
     htt.set_header({'Content-Type': 'application/json;charset=UTF-8'})
-    htt.set_data({"mobilePhone": "18408249437","validateCode": "999999"})
+    htt.set_data({"name":"1", "password":"111111"})
     print(htt.url)
     response  = htt.post_method()
     print("-----------------------")
     print(response.text)
     print(response.json())
+    print(response.request.body)

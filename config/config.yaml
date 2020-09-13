@@ -1,8 +1,8 @@
 http:
-  host : 120.78.168.146:8083
+  host : http://120.78.168.146:8083
   timeout : 1.0
 header :
-  Content-Type : application/json
+  Content-Type : 'application/json;charset=UTF-8'
 
 common_token:
   path : /get/token
@@ -19,20 +19,20 @@ database_info :
   database : learn
   host : 120.78.168.146
   username : root
-  password : xxxxx
+  password : 1111
   port : 3306
 
 email_info:
   stmp_host : smtp.qq.com
   mail_user : 1401482005@qq.com
-  stmp_password: xxxxxx
+  stmp_password: xxxxx
   stmp_port : 465
   sender : 1401482005@qq.com
   receiver : 1401482005@qq.com/1401482005@qq.com
   title : 接口测试报告
   content : 接口测试报告发送
   testuser : someone
-  on_off : "0"
+  on_off : "1"
 
 
 

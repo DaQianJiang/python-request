@@ -175,9 +175,9 @@ function showOutput(id, name) {
 <div id="div_base">
 <div class='page-header'>
 <h1>测试报告</h1>
-<p class='attribute'><strong>开始时间:</strong> 2020-05-16 21:42:50</p>
-<p class='attribute'><strong>运行时长:</strong> 0:00:00.525040</p>
-<p class='attribute'><strong>状态:</strong> 失败 1</p>
+<p class='attribute'><strong>开始时间:</strong> 2020-09-13 18:05:59</p>
+<p class='attribute'><strong>运行时长:</strong> 0:00:00.160156</p>
+<p class='attribute'><strong>状态:</strong> 通过 1 失败 1</p>
 
 </div>
 <p class='description'>登陆接口</p>
@@ -208,44 +208,69 @@ function showOutput(id, name) {
 </tr>
 
 <tr class='failClass'>
-    <td>paramunittest.testLogin_0</td>
+    <td>testLogin.testLogin</td>
+    <td>2</td>
+    <td>1</td>
     <td>1</td>
     <td>0</td>
-    <td>1</td>
-    <td>0</td>
-    <td><a href="javascript:showClassDetail('c1',1)">详情</a></td>
+    <td><a href="javascript:showClassDetail('c1',2)">详情</a></td>
 </tr>
 
-<tr id='ft1.1' class='none'>
-    <td class='failCase'><div class='testcase'>test_Login</div></td>
+<tr id='pt1.1' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_login_1___1____登录____用户正常登录____no_____test_api_user_doLogin____post____no_____n__n_____name___1___n_____password___111111__n__n_n_n______n_____code___200__n_____message____success___n_____data____登录成功__n_______code___200_______code__200__message___success___data___登录成功________</div></td>
     <td colspan='5' align='center'>
     <!--css div popup start-->
-    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_ft1.1')" >
-        失败</a>
-    <div id='div_ft1.1' class="popup_window">
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt1.1')" >
+        通过</a>
+    <div id='div_pt1.1' class="popup_window">
         <div style='text-align: right; color:red;cursor:pointer'>
-        <a onfocus='this.blur();' onclick="document.getElementById('div_ft1.1').style.display = 'none' " >
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt1.1').style.display = 'none' " >
            [x]</a>
         </div>
         <pre>
         
-ft1.1: login----测试开始----
-httpConfig++ https://driver-taxi.vvip-u.com/User/Member/loginCommon
-获取到的路径--： /User/Member/loginCommon
-第一步:设置URL----https://driver-taxi.vvip-u.com/User/Member/loginCommon
-The token is None
-2020/05/16 21:42:50 - [line:21]-common.log -INFO - the token is:None
-第二步获取header {'token': 'None'}
-第三步:设置发送请求参数 {'mobilePhone': '18408249437', 'validateCode': '999999'}
+pt1.1: ----测试开始----
+跳过用例1
+-----结束-----
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+    </td>
+</tr>
+
+<tr id='ft1.2' class='none'>
+    <td class='failCase'><div class='testcase'>test_login_2___2____登录____用户密码错误____yes_____test_api_user_doLogin____post____no______n_____name___uu___n_____password___123455__n_______n_____code___4001__n_____message____faild___n_____data____用户名或密码错误__n_______code___4001_______code__4001__message___faild___data___用户名或密码错误______failed__</div></td>
+    <td colspan='5' align='center'>
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_ft1.2')" >
+        失败</a>
+    <div id='div_ft1.2' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_ft1.2').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+ft1.2: ----测试开始----
+第一步:设置URL----http://120.78.168.146:8083/test/api/user/doLogin
+第二步获取header {'Content-Type': 'application/json'}
+第三步:设置发送请求参数 {'name': 'uu', 'password': '123455'}
 第四步发送请求
 		请求方法 post
-获得的response为: {'code': 30101, 'data': None, 'message': '验证失败，请重新登陆！'}
+获得的response为: {'code': 4001, 'message': 'faild', 'data': '用户名或密码错误'}
+第五步检查结果
+用例失败
+-----结束-----
 Traceback (most recent call last):
-  File "/Users/jiangqian/Documents/python-request/testCase/testLogin.py", line 70, in test_Login
-    self.checkResult()
-  File "/Users/jiangqian/Documents/python-request/testCase/testLogin.py", line 80, in checkResult
-    self.assertEqual(self.info['code'],self.code)
-AssertionError: 30101 != '200'
+  File "/usr/local/lib/python3.7/site-packages/ddt.py", line 151, in wrapper
+    return func(self, *args, **kwargs)
+  File "/Users/jiangqian/Documents/python-request/testCase/testLogin.py", line 82, in test_login
+    self.checkResult(self.ruleResData)
+  File "/Users/jiangqian/Documents/python-request/testCase/testLogin.py", line 106, in checkResult
+    self.assertTrue(self.response.status_code==100 and self.info['code']==json.loads(res_info)['code'])
+AssertionError: False is not true
 
 
         </pre>
@@ -256,8 +281,8 @@ AssertionError: 30101 != '200'
 
 <tr id='total_row'>
     <td>总计</td>
+    <td>2</td>
     <td>1</td>
-    <td>0</td>
     <td>1</td>
     <td>0</td>
     <td>&nbsp;</td>

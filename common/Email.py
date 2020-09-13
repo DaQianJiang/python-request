@@ -46,14 +46,15 @@ class Email():
     def set_mail_content(self):
         self.content = MIMEText(self.mail_content,"plain","utf-8")
         self.msg_root.attach(self.content)
-
+    #添加文件
     def set_mail_file(self):
         if os.path.exists(REPORT_FILE):
             self.report = os.path.join(REPORT_FILE,"report.html")
+            #self.testlist = os.path.join(ROOT_PATH,"testFile/case/user.xls")
             self.file = open(self.report,"rb").read()
             self.att_file = MIMEText(self.file,"base64","utf-8")
             self.att_file["Content-Type"]= 'application/octet-stream'
-            self.att_file["Content-Disposition"] = 'attachment; filename="mail.txt"'
+            self.att_file["Content-Disposition"] = 'attachment; filename="report.html"'
             self.msg_root.attach(self.att_file)
         else:
             raise FileNotFoundError("testReport文件未找到")

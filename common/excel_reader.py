@@ -7,7 +7,6 @@ from common.config_reader import ROOT_PATH
 from xlutils.copy import copy
 
 TEST_FILE = os.path.join(ROOT_PATH,"testFile")
-print(ROOT_PATH)
 class dataReader():
     logger = Log.Log().get_log()
 
@@ -42,10 +41,8 @@ class dataReader():
         #self.data = self.base_excel(xls_name,sheet_name)
         self.data_copy = copy(self.file)
         self.sheet = self.data_copy.get_sheet(sheet=sheet_name)
-        print("-----",self.data_copy)
         self.sheet.write(row, col, value)  # 在某一单元格写入value
         self.data_copy.save(self.xls_path)  # 保存文件
-        print("---向Excel追加数据成功----")
 
 
 
