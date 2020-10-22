@@ -37,13 +37,22 @@ class httpConfig():
         self.files = files
 
     def get_method(self):
-        try:
-            self.response = requests.get(self.url,params=self.param,
-                                         headers = self.headers,timeout = float(self.timeout))
-            return self.response
-        except TimeoutError:
-            self.logger.error("Time out")
-            return None
+        if self.param == '':
+            try:
+                self.response = requests.get(self.url,
+                                             headers = self.headers,timeout = float(self.timeout))
+                return self.response
+            except TimeoutError:
+                self.logger.error("Time out")
+                return None
+        else:
+            try:
+                self.response = requests.get(self.url,params=self.param,
+                                             headers = self.headers,timeout = float(self.timeout))
+                return self.response
+            except TimeoutError:
+                self.logger.error("Time out")
+                return None
 
     def post_method(self):
         try:

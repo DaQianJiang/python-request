@@ -12,7 +12,7 @@ class configReader():
     #读取配置文件内容
     def get_config_value(self,element):
         if os.path.exists(CONFIG_PATH):
-            with open(CONFIG_PATH) as f :
+            with open(CONFIG_PATH,'rb') as f :
                 self.config_value = yaml.safe_load(f.read()).get(element)
             return self.config_value
         else:
