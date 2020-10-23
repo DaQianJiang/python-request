@@ -1,7 +1,7 @@
 import os
 import unittest
 from common.log import Log
-from common.Email import Email
+from common.EmailMethod import Email
 from common.HTMLTestRunner import HTMLTestRunner
 from common.config_reader import configReader
 from common.config_reader import ROOT_PATH
