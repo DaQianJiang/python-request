@@ -5,7 +5,7 @@ from common.httpMethod import httpConfig
 import ddt
 import os
 from common.excel_reader import dataReader
-from common.commonMethod import commonMethod
+from common.CommonToken import commonMethod
 import json
 
 # 获取Excel表中的测试用例
@@ -75,13 +75,15 @@ class testLogin(unittest.TestCase):
             print("获取接口请求status——code", self.response.status_code)
             print("获取接口请求参数信息", self.response.request.body)
 
-            print("需要提取的参数提取出来，并且写入下一行用例中")
+
             if self.extractData != '':
+                print("需要提取的参数提取出来，并且写入下一行用例中")
                 addparam = {}
                 for i in self.extractData:
-                    addparam[i] = self.response.json()['data'][i]
+                    for k ,v  in json.loads(self.addData).items():
+                        if i == v:
+                            addparam[i] = self.response.json()[i]
                 dataReader().write_excel(test_file, sheet_nme, int(self.ids+1), (max_cols - 5), addparam)
-
 
             print("第五步检查结果")
             # 检查结果

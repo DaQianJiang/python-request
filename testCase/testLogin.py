@@ -5,14 +5,15 @@ from common.httpMethod import httpConfig
 import ddt
 import os
 from common.excel_reader import dataReader
-from common.commonMethod import commonMethod
+from common.CommonToken import commonMethod
 import json
 
+
 #获取Excel表中的测试用例
-test_file = "shennong.xls"
-sheet_nme = 'shennongh5'
-login_excel = dataReader().get_excel(test_file,sheet_nme)
-max_cols = dataReader().base_excel(test_file,sheet_nme).ncols
+test_file = "user.xls"
+sheet_name = 'login'
+login_excel = dataReader().get_excel(test_file,sheet_name)
+max_cols = dataReader().base_excel(test_file,sheet_name).ncols
 httpCongigInfo = httpConfig()
 commethod = commonMethod()
 flag = 1
@@ -77,11 +78,14 @@ class testLogin(unittest.TestCase):
             elif self.method == "get":
                 self.response = httpCongigInfo.get_method()
             print("第四步发送请求\n\t\t请求方法",self.method)
+
+            print("获取接口请求status——code", self.response.status_code)
+            print("获取接口请求参数信息", self.response.request.body)
             print("获得的response为:",self.response.json())
 
             print("第五步检查结果")
             #检查结果
-            self.checkResult(self.ruleResData)
+            self.checkResult(self.ruleResData,test_file,sheet_name)
         else:
             print("跳过用例%d"%int(self.ids))
 
@@ -91,19 +95,19 @@ class testLogin(unittest.TestCase):
         print('-----结束-----')
 
 
-    def checkResult(self,res_info):
+    def checkResult(self,res_info,test_file,sheet_name):
         self.info = self.response.json()
         if (self.response.status_code==200 and self.info['code']==json.loads(res_info)['code']):
             self.trueResDate = self.info
             self.result = 'success'
-            dataReader().write_excel(test_file,sheet_nme,int(self.ids),(max_cols-2),self.response.text)
-            dataReader().write_excel(test_file,sheet_nme,int(self.ids),(max_cols-1),self.result)
+            dataReader().write_excel(test_file,sheet_name,int(self.ids),(max_cols-2),self.response.text)
+            dataReader().write_excel(test_file,sheet_name,int(self.ids),(max_cols-1),self.result)
             print("用例通过")
         else:
             self.trueResDate = self.info
             self.result = "failed"
-            dataReader().write_excel(test_file,sheet_nme,int(self.ids),(max_cols-2),self.response.text)
-            dataReader().write_excel(test_file,sheet_nme,int(self.ids),(max_cols-1),self.result)
+            dataReader().write_excel(test_file,sheet_name,int(self.ids),(max_cols-2),self.response.text)
+            dataReader().write_excel(test_file,sheet_name,int(self.ids),(max_cols-1),self.result)
             print("用例失败")
         self.assertTrue(self.response.status_code==200 and self.info['code']==json.loads(res_info)['code'])
 
