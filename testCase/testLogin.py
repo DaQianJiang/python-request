@@ -9,10 +9,10 @@ from common.commonMethod import commonMethod
 import json
 
 #获取Excel表中的测试用例
-test_file = "user.xls"
-sheet_nme = 'login'
+test_file = "shennong.xls"
+sheet_nme = 'shennongh5'
 login_excel = dataReader().get_excel(test_file,sheet_nme)
-max_cols = dataReader().base_excel(test_file,'').ncols
+max_cols = dataReader().base_excel(test_file,sheet_nme).ncols
 httpCongigInfo = httpConfig()
 commethod = commonMethod()
 flag = 1
@@ -93,17 +93,17 @@ class testLogin(unittest.TestCase):
 
     def checkResult(self,res_info):
         self.info = self.response.json()
-        if (self.response.status_code==100 and self.info['code']==json.loads(res_info)['code']):
+        if (self.response.status_code==200 and self.info['code']==json.loads(res_info)['code']):
             self.trueResDate = self.info
             self.result = 'success'
-            dataReader().write_excel(test_file,'login',int(self.ids),(max_cols-2),self.response.text)
-            dataReader().write_excel(test_file,'login',int(self.ids),(max_cols-1),self.result)
+            dataReader().write_excel(test_file,sheet_nme,int(self.ids),(max_cols-2),self.response.text)
+            dataReader().write_excel(test_file,sheet_nme,int(self.ids),(max_cols-1),self.result)
             print("用例通过")
         else:
             self.trueResDate = self.info
             self.result = "failed"
-            dataReader().write_excel(test_file,'login',int(self.ids),(max_cols-2),self.response.text)
-            dataReader().write_excel(test_file,'login',int(self.ids),(max_cols-1),self.result)
+            dataReader().write_excel(test_file,sheet_nme,int(self.ids),(max_cols-2),self.response.text)
+            dataReader().write_excel(test_file,sheet_nme,int(self.ids),(max_cols-1),self.result)
             print("用例失败")
         self.assertTrue(self.response.status_code==200 and self.info['code']==json.loads(res_info)['code'])
 
