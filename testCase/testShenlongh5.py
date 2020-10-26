@@ -57,7 +57,7 @@ class testLogin(unittest.TestCase):
                 param_data = json.loads(self.paramData)
 
 
-            if self.addData != '':
+            if self.addData != '' and isinstance(self.addData,dict):
                 print("将提取出来的参数添加到下一个参数变量中")
                 dict(param_data).update(self.addData)
 
