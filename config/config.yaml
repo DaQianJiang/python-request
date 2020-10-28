@@ -1,6 +1,6 @@
 http:
-  host : http://120.78.168.146:8083
-  #host : https://web.shennongshop.cn
+  #host : http://120.78.168.146:8083
+  host : https://web.shennongshop.cn
   timeout : 1.0
 header :
   Content-Type : 'application/json;charset=UTF-8'

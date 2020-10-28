@@ -1,0 +1,71 @@
+config:
+  name: basic test with httpbin
+  base_url: https://web.shennongshop.cn
+
+testcase:
+-
+    name: 查询商品详情
+    isExec: yes
+    request:
+      url: /service/cust/goods/21
+      method: GET
+      header:
+        Content-Type: 'application/json;charset=UTF-8'
+        token: no
+      data: ""
+    extract: ""
+    validate:
+      - eq: ["status_code", 200]
+      - eq: ["code", 200]
+      - contains: [body.data.name, "会理软籽石榴-臻选"]
+-
+  name: 提交订单
+  isExec: no
+  request:
+    url: /service/cust/order/place
+    method: POST
+    header:
+      Content-Type: 'application/json;charset=UTF-8'
+      token: yes
+    data:
+      activityCode: ""
+      groupCode: ""
+      goodsId: "21"
+      specId: "21"
+      goodsSpecQunatity: "1"
+      goodsType: 1
+      addressDTO:
+        consignee: "蒋倩"
+        phone: "18408249437"
+        provinceName: "四川省"
+        provinceCode: "510000"
+        cityName: "成都市"
+        cityCode: "510100"
+        areaName: "锦江区"
+        areaCode: "510104"
+        address: "御景台"
+        remark: ""
+  extract:
+    - ordernum: content.responseBody.data
+  validate:
+    - eq: ["status_code", 200]
+    - eq: [body.headers.Host, "httpbin.org"]
+
+-
+    name: 订单支付
+    isExec: no
+    request:
+      url: /service/cust/order/pay/wechat
+      method: POST
+      header:
+        Content-Type: 'application/json;charset=UTF-8'
+        token: yes
+      data:
+        deviceTypeEnumName: "IOS"
+        deviceVersion: "1.0.0"
+        orderNum: $ordernum
+    extract: ""
+    validate:
+      - eq: ["status_code", 200]
+      - eq: [body.headers.Host, "httpbin.org"]
+

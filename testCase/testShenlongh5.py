@@ -27,7 +27,7 @@ class testLogin(unittest.TestCase):
         # self.logger.info("---测试开始----")
 
     @ddt.data(*login_excel)
-    def test_login(self, data):
+    def test_shennong_order(self, data):
         self.ids, self.name, self.description, self.isExec,\
         self.url, self.method, self.token, self.paramData, self.extractData, self.addData,\
         self.expectedResData, self.validData, self.trueResDate, self.result = data
@@ -43,7 +43,7 @@ class testLogin(unittest.TestCase):
 
                 header = {"Content-Type": "application/json",
                           "Platform": "APP",
-                          "Authorization": "bearereyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJvcGVuX2lkIjoib1kwdHVzeE43ZXRyZEpwSGdmaWpMVWZxcUZPQSIsInVzZXJfbmFtZSI6IjE4NDA4MjQ5NDM3IiwiYXV0aG9yaXRpZXMiOlsidmlld0dvb2RzRGV0YWlsIiwibGlzdEdvb2RzIiwiYWRkR29vZHMiLCJlZGl0R29vZHMiLCJzdWJtaXRHb29kc0F1ZGl0IiwicmVtb3ZlR29vZHMiLCJwdXRPblNhbGUiLCJwdWxsT2ZmU2hlbHZlcyIsImxpc3RNZXJjaGFudHNOb3RpZmljYXRpb24iLCJkZWxpdmVyeVN3aXRjaCIsImVuYWJsZVN0b3JlRGVsaXZlcnkiLCJkaXNhYmxlU3RvcmVEZWxpdmVyeSIsImxpc3RSb2xlcyIsInZpZXdSb2xlRGV0YWlsIiwibGlzdFVzZXJzIiwidmlld1VzZXJEZXRhaWwiLCJhZGRVc2VyIiwiZWRpdFVzZXIiLCJkaXNhYmxlVXNlciIsImRlbGV0ZVVzZXIiLCJsaXN0Q291cG9uY2hhcmdlT2ZmUmVjb3JkcyIsImNvdXBvbkNoYXJnZU9mZiIsInZpZXdEZWxpdmVyeU1ndCIsImxpc3ROb3RpY2VzIl0sInBsYXRmb3JtIjoiMSIsImNsaWVudF9pZCI6ImZhcm1fcHJvZHVjdF9hcHAiLCJhdWQiOlsiZGljdGlvbmFyeSIsImNvdXBvbl9tYW5hZ2VtZW50IiwibG9naXN0aWNzX21ndCIsImJvdXRpcXVlX29yZGVyIiwic2hvcF9tYW5hZ2VtZW50IiwiYm91dGlxdWVfZHViYm9fcmVwZWF0ZXIiLCJnb29kc2NlbnRlcl9tYW5hZ2VtZW50Iiwibm90aWZpY2F0aW9uX21hbmFnZW1lbnQiXSwiZnVsbF9uYW1lIjoi6JKLXl9eIiwiYXZhdGFyX3VybCI6bnVsbCwidXNlcl9pZCI6MTI5ODU1MjYyMDUzNjg1NjU3Nywic2NvcGUiOlsicmVhZCIsIndyaXRlIl0sIm5lZWRfcmVzZXRfcGFzc3dvcmQiOnRydWUsInBob25lX251bWJlciI6IjE4NDA4MjQ5NDM3IiwiZXhwIjoxNjAzNzUzMjE3LCJjYXRlZ29yeSI6MiwianRpIjoiZTM0NjFhMzItNjlhNC00N2ZkLWE2MTItMDlkZDVmZWQ5MzJkIiwidXNlcm5hbWUiOiIxODQwODI0OTQzNyJ9.VCAunzXc9_xkuSP8VFtFJ7Gr2XxYU1E8JnL-SPoGgCqfE8chFkXKCy5ODwm-1uQGZcbTvbTJFuaBxMLOPBD26oA8pEH9IcNJhxHgwVcOiBc8iA9tLrH42Mg3B0AaaHE4bbhY6GLvNnj5f3ZPkpZfVr-utNyERuo-w5Va6VA7ae8"
+                          "Authorization": "bearereyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX25hbWUiOiIxODQwODI0OTQzNyIsImF1dGhvcml0aWVzIjpbInZpZXdHb29kc0RldGFpbCIsImxpc3RHb29kcyIsImFkZEdvb2RzIiwiZWRpdEdvb2RzIiwic3VibWl0R29vZHNBdWRpdCIsInJlbW92ZUdvb2RzIiwicHV0T25TYWxlIiwicHVsbE9mZlNoZWx2ZXMiLCJsaXN0TWVyY2hhbnRzTm90aWZpY2F0aW9uIiwiZGVsaXZlcnlTd2l0Y2giLCJlbmFibGVTdG9yZURlbGl2ZXJ5IiwiZGlzYWJsZVN0b3JlRGVsaXZlcnkiLCJsaXN0Um9sZXMiLCJ2aWV3Um9sZURldGFpbCIsImxpc3RVc2VycyIsInZpZXdVc2VyRGV0YWlsIiwiYWRkVXNlciIsImVkaXRVc2VyIiwiZGlzYWJsZVVzZXIiLCJkZWxldGVVc2VyIiwibGlzdENvdXBvbmNoYXJnZU9mZlJlY29yZHMiLCJjb3Vwb25DaGFyZ2VPZmYiLCJ2aWV3RGVsaXZlcnlNZ3QiLCJsaXN0Tm90aWNlcyJdLCJwbGF0Zm9ybSI6IjEiLCJjbGllbnRfaWQiOiJmYXJtX3Byb2R1Y3RfYXBwIiwiYXVkIjpbImRpY3Rpb25hcnkiLCJjb3Vwb25fbWFuYWdlbWVudCIsImxvZ2lzdGljc19tZ3QiLCJib3V0aXF1ZV9vcmRlciIsInNob3BfbWFuYWdlbWVudCIsImJvdXRpcXVlX2R1YmJvX3JlcGVhdGVyIiwiZ29vZHNjZW50ZXJfbWFuYWdlbWVudCIsIm5vdGlmaWNhdGlvbl9tYW5hZ2VtZW50Il0sImZ1bGxfbmFtZSI6IuiSi15fXiIsImF2YXRhcl91cmwiOm51bGwsInVzZXJfaWQiOjEyOTg1NTI2MjA1MzY4NTY1NzcsInNjb3BlIjpbInJlYWQiLCJ3cml0ZSJdLCJuZWVkX3Jlc2V0X3Bhc3N3b3JkIjp0cnVlLCJwaG9uZV9udW1iZXIiOiIxODQwODI0OTQzNyIsImV4cCI6MTYwMzkyNDQzNSwiY2F0ZWdvcnkiOjIsImp0aSI6Ijc4NmNjNjUyLTNlZmEtNGQ5MS05NTljLTZjYjkxMGZkOGU1NSIsInVzZXJuYW1lIjoiMTg0MDgyNDk0MzcifQ.eryuLPZdK7VB6VHM8g6S9vWg-5Z-0e3qU7mhu3xJtgeqFalCIVsV6Flc2jhPAoZdgCDpK1FewA-5MF8mUJaPobiP5QGoYWcKhCZTSbWXJtse-xWScQO4G6i57KtkpYNaYjVcY-D01lRbOsfyB3h9rTsGYDXn6b0DU0_opCuGccg"
                           }
             elif self.token == "no":
                 header = {"Content-Type": "application/json"}
@@ -77,10 +77,13 @@ class testLogin(unittest.TestCase):
 
 
             if self.extractData != '':
-                print("需要提取的参数提取出来，并且写入下一行用例中")
+                print("需要提取的参数提取出来，并且写入下一行用例中:",self.extractData)
                 addparam = {}
                 for i in self.extractData:
+                    print("正在提取的参数",i)
                     for k ,v  in json.loads(self.addData).items():
+                        print("要匹配的参数",self.addData)
+                        print("匹配参数每次读取的值",(k,v))
                         if i == v:
                             addparam[i] = self.response.json()[i]
                 dataReader().write_excel(test_file, sheet_nme, int(self.ids+1), (max_cols - 5), addparam)

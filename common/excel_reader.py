@@ -8,7 +8,7 @@ from xlutils.copy import copy
 
 TEST_FILE = os.path.join(ROOT_PATH,"testFile")
 class dataReader():
-    logger = Log.Log().get_log()
+#    logger = Log.Log().get_log()
 
 
 
