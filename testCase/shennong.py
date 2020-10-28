@@ -16,66 +16,56 @@ testcase = casePara(CONFIG_PATH).get_testcase()
 config = casePara(CONFIG_PATH).get_config()
 
 HOST = config["base_url"]
-
+httpCongigInfo = httpConfig()
 @ddt.ddt
 class testLogin(unittest.TestCase):
+    ids = 0
 
     def setUp(self):
         print("----测试开始----")
 
     @ddt.data(*testcase)
     def test_shennong_order(self, data):
-        print(data)
+        self.ids+=1
+        print(data['request']['url'])
+        if data['isExec']:
+            httpCongigInfo.set_url(data['request']['url'])
+            print("第一步:设置URL" + "----" + httpCongigInfo.url)
+            if data['token']:
+                header = data['request']['header']
+                header['Au']='123'
+            else:
+                header = data['request']['header']
+            httpCongigInfo.set_header(header)
+            print("第二步获取header", httpCongigInfo.headers)
+
+            if data['request']['params']=='':
+                param_data = ""
+            else:
+                param_data = data['request']['params']
+            httpCongigInfo.set_param(param_data)
+            httpCongigInfo.set_data(param_data)
+            print("第三步:设置发送请求参数", param_data)
+
+            if data['request']['method']=='GET':
+                self.response = httpCongigInfo.get_method()
+            if data['request']['method']=='POST':
+                self.response = httpCongigInfo.post_method()
+            print("第四步发送请求方法", data['request']['method'])
+            print("获得的response为:", self.response.json())
+            print("获取接口请求status——code", self.response.status_code)
+            print("获取接口请求参数信息", self.response.request.body)
+        else:
+            print("跳过用例%d,%s"%(self.ids,data['name']))
 
 
 
-    #     self.ids, self.name, self.description, self.isExec, \
-    #     self.url, self.method, self.token, self.paramData, self.extractData, self.addData, \
-    #     self.expectedResData, self.validData, self.trueResDate, self.result = data
-    #
-    #     print("exceldata:", isinstance(self.paramData,dict),self.extractData,self.addData)
-    #
-    #     if self.isExec == 'yes':
-    #         httpCongigInfo.set_url(self.url)
-    #         print("第一步:设置URL" + "----" + httpCongigInfo.url)
-    #         # token
-    #         if self.token == 'yes':
-    #             #token = commethod.get_common_token()
-    #
-    #             header = {"Content-Type": "application/json",
-    #                       "Platform": "APP",
-    #                       "Authorization": "bearereyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX25hbWUiOiIxODQwODI0OTQzNyIsImF1dGhvcml0aWVzIjpbInZpZXdHb29kc0RldGFpbCIsImxpc3RHb29kcyIsImFkZEdvb2RzIiwiZWRpdEdvb2RzIiwic3VibWl0R29vZHNBdWRpdCIsInJlbW92ZUdvb2RzIiwicHV0T25TYWxlIiwicHVsbE9mZlNoZWx2ZXMiLCJsaXN0TWVyY2hhbnRzTm90aWZpY2F0aW9uIiwiZGVsaXZlcnlTd2l0Y2giLCJlbmFibGVTdG9yZURlbGl2ZXJ5IiwiZGlzYWJsZVN0b3JlRGVsaXZlcnkiLCJsaXN0Um9sZXMiLCJ2aWV3Um9sZURldGFpbCIsImxpc3RVc2VycyIsInZpZXdVc2VyRGV0YWlsIiwiYWRkVXNlciIsImVkaXRVc2VyIiwiZGlzYWJsZVVzZXIiLCJkZWxldGVVc2VyIiwibGlzdENvdXBvbmNoYXJnZU9mZlJlY29yZHMiLCJjb3Vwb25DaGFyZ2VPZmYiLCJ2aWV3RGVsaXZlcnlNZ3QiLCJsaXN0Tm90aWNlcyJdLCJwbGF0Zm9ybSI6IjEiLCJjbGllbnRfaWQiOiJmYXJtX3Byb2R1Y3RfYXBwIiwiYXVkIjpbImRpY3Rpb25hcnkiLCJjb3Vwb25fbWFuYWdlbWVudCIsImxvZ2lzdGljc19tZ3QiLCJib3V0aXF1ZV9vcmRlciIsInNob3BfbWFuYWdlbWVudCIsImJvdXRpcXVlX2R1YmJvX3JlcGVhdGVyIiwiZ29vZHNjZW50ZXJfbWFuYWdlbWVudCIsIm5vdGlmaWNhdGlvbl9tYW5hZ2VtZW50Il0sImZ1bGxfbmFtZSI6IuiSi15fXiIsImF2YXRhcl91cmwiOm51bGwsInVzZXJfaWQiOjEyOTg1NTI2MjA1MzY4NTY1NzcsInNjb3BlIjpbInJlYWQiLCJ3cml0ZSJdLCJuZWVkX3Jlc2V0X3Bhc3N3b3JkIjp0cnVlLCJwaG9uZV9udW1iZXIiOiIxODQwODI0OTQzNyIsImV4cCI6MTYwMzkyNDQzNSwiY2F0ZWdvcnkiOjIsImp0aSI6Ijc4NmNjNjUyLTNlZmEtNGQ5MS05NTljLTZjYjkxMGZkOGU1NSIsInVzZXJuYW1lIjoiMTg0MDgyNDk0MzcifQ.eryuLPZdK7VB6VHM8g6S9vWg-5Z-0e3qU7mhu3xJtgeqFalCIVsV6Flc2jhPAoZdgCDpK1FewA-5MF8mUJaPobiP5QGoYWcKhCZTSbWXJtse-xWScQO4G6i57KtkpYNaYjVcY-D01lRbOsfyB3h9rTsGYDXn6b0DU0_opCuGccg"
-    #                       }
-    #         elif self.token == "no":
-    #             header = {"Content-Type": "application/json"}
-    #         httpCongigInfo.set_header(header)
-    #         print("第二步获取header", httpCongigInfo.headers)
-    #
-    #         # data
-    #         if self.paramData == '':
-    #             param_data = ''
-    #         else:
-    #             param_data = json.loads(self.paramData)
-    #
-    #
-    #         if self.addData != '' and isinstance(self.addData,dict):
-    #             print("将提取出来的参数添加到下一个参数变量中")
-    #             dict(param_data).update(self.addData)
-    #
-    #         httpCongigInfo.set_data(param_data)
-    #         httpCongigInfo.set_param(param_data)
-    #         print("第三步:设置发送请求参数", httpCongigInfo.data)
-    #
-    #         # 执行请求获取 response
-    #         if self.method == "post":
-    #             self.response = httpCongigInfo.post_method()
-    #         elif self.method == "get":
-    #             self.response = httpCongigInfo.get_method()
-    #         print("第四步发送请求\n\t\t请求方法", self.method)
-    #         print("获得的response为:", self.response.json())
-    #         print("获取接口请求status——code", self.response.status_code)
-    #         print("获取接口请求参数信息", self.response.request.body)
-    #
+
+
+
+
+
+
     #
     #         if self.extractData != '':
     #             print("需要提取的参数提取出来，并且写入下一行用例中:",self.extractData)

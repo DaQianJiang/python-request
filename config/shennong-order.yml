@@ -6,28 +6,28 @@ testcase:
 -
     name: 查询商品详情
     isExec: yes
+    token: no
     request:
       url: /service/cust/goods/21
       method: GET
       header:
         Content-Type: 'application/json;charset=UTF-8'
-        token: no
-      data: ""
+      params: ""
     extract: ""
     validate:
       - eq: ["status_code", 200]
       - eq: ["code", 200]
-      - contains: [body.data.name, "会理软籽石榴-臻选"]
+      - contains: [content.data.name, "会理软籽石榴-臻选"]
 -
   name: 提交订单
   isExec: no
   request:
     url: /service/cust/order/place
     method: POST
+    token: yes
     header:
       Content-Type: 'application/json;charset=UTF-8'
-      token: yes
-    data:
+    params:
       activityCode: ""
       groupCode: ""
       goodsId: "21"
@@ -57,10 +57,10 @@ testcase:
     request:
       url: /service/cust/order/pay/wechat
       method: POST
+      token: yes
       header:
         Content-Type: 'application/json;charset=UTF-8'
-        token: yes
-      data:
+      params:
         deviceTypeEnumName: "IOS"
         deviceVersion: "1.0.0"
         orderNum: $ordernum

@@ -27,12 +27,16 @@ class casePara():
         return self.case_value
 
 
+
 if __name__ == '__main__':
     CONFIG_PATH = os.path.join(ROOT_PATH,'config/shennong-order.yml')
     ca = casePara(CONFIG_PATH)
     datas = ca.get_config()
     testcase = ca.get_testcase()
     for case in testcase:
+        header = case['request']['header']
+        #header['uu']=123
+        header.update({"country": "china"})
         print("testcase",case)
     print(datas)
 
