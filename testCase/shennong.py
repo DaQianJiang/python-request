@@ -61,13 +61,17 @@ class testLogin(AssertType):
 
             if 'validate' in data:
                 for i in data['validate']:
-                    valid_data = Validation().get_valid_value(i,self.response)
+                    valid_data = Validation().get_uniform_valid(i,self.response)
                     compare = Validation().get_uniform_compare(valid_data['assert'])
                     if compare=='equal':
                         assert_string = valid_data['check']
                         assert_data = valid_data['expect']
-                        respondata = self.response.json()[assert_string]
-                        AssertType.assert_equal_new(assert_data,respondata)
+                        if assert_string=='status_code':
+                            respondata = self.response.status_code
+                            self.assert_equal_new(assert_data,respondata)
+                        else:
+                            respondata = self.response.json()[assert_string]
+                            self.assert_equal_new(assert_data,respondata)
         else:
             print("跳过用例%d,%s"%(self.ids,data['name']))
 
