@@ -8,6 +8,8 @@ from common.excel_reader import dataReader
 from common.CommonToken import commonMethod
 import json
 from common.casePara import casePara
+from common.validM import Validation
+from common.validM import AssertType
 
 # 获取文件中的测试用例
 ROOT_PATH = os.path.dirname(os.path.abspath('.'))
@@ -15,10 +17,11 @@ CONFIG_PATH = os.path.join(ROOT_PATH,'config/shennong-order.yml')
 testcase = casePara(CONFIG_PATH).get_testcase()
 config = casePara(CONFIG_PATH).get_config()
 
+
 HOST = config["base_url"]
 httpCongigInfo = httpConfig()
 @ddt.ddt
-class testLogin(unittest.TestCase):
+class testLogin(AssertType):
     ids = 0
 
     def setUp(self):
@@ -55,8 +58,20 @@ class testLogin(unittest.TestCase):
             print("获得的response为:", self.response.json())
             print("获取接口请求status——code", self.response.status_code)
             print("获取接口请求参数信息", self.response.request.body)
+
+            if 'validate' in data:
+                for i in data['validate']:
+                    valid_data = Validation().get_valid_value(i,self.response)
+                    compare = Validation().get_uniform_compare(valid_data['assert'])
+                    if compare=='equal':
+                        assert_string = valid_data['check']
+                        assert_data = valid_data['expect']
+                        respondata = self.response.json()[assert_string]
+                        AssertType.assert_equal_new(assert_data,respondata)
         else:
             print("跳过用例%d,%s"%(self.ids,data['name']))
+
+
 
 
 
