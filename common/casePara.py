@@ -39,8 +39,12 @@ if __name__ == '__main__':
         header = case['request']['header']
         #header['uu']=123
         header.update({"country": "china"})
+        if 'params' in case['request'].keys():
+            print(case['request']['params'])
         #print("testcase",case)
-        print(case['validate'])
+        print(case['extract'])
+
+
 
     #print(ca.get_valid_value()['validate'])
    # print(datas)

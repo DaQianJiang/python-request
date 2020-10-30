@@ -3,17 +3,13 @@ import unittest
 
 class Validation():
 
-    def get_uniform_valid(self,data,response):
+    def get_uniform_valid(self,data):
         valid_value = {}
         if isinstance(data,dict):
             for k,v in data.items():
                 valid_value['assert'] = k
                 valid_value['check'] = v[0]
                 valid_value['expect'] = v[1]
-                if '.' in valid_value['check']:
-                    check_data = valid_value['check'].split('.')
-                    for i in check_data:
-                        valid_value['check']=response.json()[i]
             return valid_value
 
     def get_uniform_compare(self,compared):
@@ -57,9 +53,9 @@ class Validation():
 
 
 class AssertType(unittest.TestCase):
-    def assert_equal_new(self,assert_data,response_data):
+    def assert_equal_new(self,assert_data,response_data,msg=None):
         try:
-            unittest.TestCase.assertEqual(assert_data,response_data)
+            unittest.TestCase.assertEqual(self,assert_data,response_data,msg)
         except AssertionError:
             print('assert断言失败')
 

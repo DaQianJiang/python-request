@@ -55,23 +55,30 @@ class testLogin(AssertType):
             if data['request']['method']=='POST':
                 self.response = httpCongigInfo.post_method()
             print("第四步发送请求方法", data['request']['method'])
-            print("获得的response为:", self.response.json())
+            print("获得的response为:", self.response.json()['data']['name'])
+            print("获得content内容",self.response.content)
             print("获取接口请求status——code", self.response.status_code)
             print("获取接口请求参数信息", self.response.request.body)
 
             if 'validate' in data:
                 for i in data['validate']:
-                    valid_data = Validation().get_uniform_valid(i,self.response)
+                    valid_data = Validation().get_uniform_valid(i)
                     compare = Validation().get_uniform_compare(valid_data['assert'])
                     if compare=='equal':
                         assert_string = valid_data['check']
                         assert_data = valid_data['expect']
-                        if assert_string=='status_code':
+                        if assert_string =='status_code':
                             respondata = self.response.status_code
-                            self.assert_equal_new(assert_data,respondata)
+                            self.assert_equal_new(assert_data,respondata,msg=assert_data)
+                        elif '.' in assert_string:
+                            k  = assert_string.split('.')
+                            respondata = self.response.json()
+                            for k_string in k[1:]:
+                                respondata = respondata[k_string]
+                            self.assert_equal_new(assert_data,respondata,msg=assert_data)
                         else:
                             respondata = self.response.json()[assert_string]
-                            self.assert_equal_new(assert_data,respondata)
+                            self.assert_equal_new(assert_data,respondata,msg=assert_data)
         else:
             print("跳过用例%d,%s"%(self.ids,data['name']))
 

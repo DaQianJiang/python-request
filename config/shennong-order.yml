@@ -13,11 +13,12 @@ testcase:
       header:
         Content-Type: 'application/json;charset=UTF-8'
       params: ""
-    extract: ""
+    extract:
+      - ids: content.data.id
     validate:
       - eq: ["status_code", 200]
       - eq: ["code", 200]
-      - contains: [content.data.name, "会理软籽石榴-臻选"]
+      - eq: [content.data.name, "会理软籽石榴-臻选"]
 -
   name: 提交订单
   isExec: no
@@ -30,7 +31,7 @@ testcase:
     params:
       activityCode: ""
       groupCode: ""
-      goodsId: "21"
+      goodsId: $ids
       specId: "21"
       goodsSpecQunatity: "1"
       goodsType: 1
