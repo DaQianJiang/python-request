@@ -17,7 +17,6 @@ class Extrct():
         return self.params_dict
 
     def findall_variables(self):
-        
         return
 
     def new_response(self,responsed,extrad):
