@@ -47,7 +47,8 @@ testcase:
         address: "御景台"
         remark: ""
   extract:
-    - ordernum: content.responseBody.data
+    - ordernum: content.data
+    - dtat: content.data
   validate:
     - eq: ["status_code", 200]
     - eq: [body.headers.Host, "httpbin.org"]

@@ -55,10 +55,12 @@ class testLogin(AssertType):
             if data['request']['method']=='POST':
                 self.response = httpCongigInfo.post_method()
             print("第四步发送请求方法", data['request']['method'])
-            print("获得的response为:", self.response.json()['data']['name'])
+            print("获得的response为:", self.response.json())
             print("获得content内容",self.response.content)
             print("获取接口请求status——code", self.response.status_code)
             print("获取接口请求参数信息", self.response.request.body)
+
+            print("参数化")
 
             if 'validate' in data:
                 for i in data['validate']:
