@@ -1,10 +1,9 @@
-
 class Extrct():
     params_dict = {}
     def uniform_extractData(self,extrat_data,response):
         #respondata = response.json()
-        respondata = response
         for data in extrat_data:
+            respondata = response
             for k,v in data.items():
                 if '.' in v:
                     vs  = v.split('.')
@@ -17,7 +16,12 @@ class Extrct():
 
         return self.params_dict
 
-    def new_response(self):
+    def findall_variables(self):
+        
+        return
+
+    def new_response(self,responsed,extrad):
+
         return
 
 if __name__ == '__main__':
